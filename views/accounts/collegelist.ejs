@@ -1,0 +1,234 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="styles/shards-dashboards.1.1.0.min.css">
+    <link rel="stylesheet" href="styles/extras.1.1.0.min.css">
+    <link rel="stylesheet" href="styles/change.css">
+
+    <title>College Finder</title>
+    <link href="/css/1.css" rel="stylesheet">
+    <script src="/js/1.js"></script>
+    <link href="/css/1.css" rel="stylesheet">
+
+</head>
+
+<body class="h-100">
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Main Sidebar -->
+            <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+                <div class="main-navbar">
+                    <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+                        <a class="navbar-brand w-100 mr-0" style="line-height: 25px;">
+                            <div class="d-table m-auto">
+
+                                <span class="d-none d-md-inline ml-1">Dashboard</span>
+                            </div>
+                        </a>
+                        <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
+                            <i class="material-icons">&#xE5C4;</i>
+                        </a>
+                    </nav>
+                </div>
+                <div class="nav-wrapper">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/adminprofile">
+                                <i class="material-icons">view_list</i>
+                                <span>All Reviews</span>
+                            </a>
+                        </li>
+
+
+
+                        <li class="nav-item">
+                            <a class="nav-link " href="/clglist">
+                                <i class="material-icons">edit</i>
+                                <span>List of College</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " href="/reviewslist">
+                                <i class="material-icons">layers</i>
+                                <span>Posts</span>
+                            </a>
+                        </li>
+
+
+
+                    </ul>
+                </div>
+            </aside>
+            <!-- End Main Sidebar -->
+            <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+                <div class="main-navbar sticky-top bg-white">
+                    <!-- Main Navbar -->
+                    <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
+                        <form class="main-navbar__search w-100 d-none d-md-flex d-lg-flex" method="post"
+                            action="/search">
+                            <div class="input-group input-group-seamless ml-3">
+                                <input class="navbar-search form-control" name="q" type="text"
+                                    placeholder="Search for something...">
+
+                                <button type="submit" class="btn btn-primary mb-1">Search</button>
+                            </div>
+                        </form>
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle text-nowrap px-10" data-toggle="dropdown" href="#"
+                                role="button" aria-haspopup="true" aria-expanded="false">
+
+                                <p>admin</p>
+
+                                <span class="d-none d-md-inline-block"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-small">
+
+                                <a class="dropdown-item text-danger" href="/adminlogout">
+                                    <i class="material-icons text-danger">&#xE879;</i>Logout </a>
+                            </div>
+                        </li>
+                        </div>
+                        
+                        <!-- Page Header -->
+                        
+                        
+                        
+                        
+                        <div class="page-header row no-gutters py-4">
+                            <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                                <span class="text-uppercase page-subtitle">Dashboard</span>
+                                <h3 class="page-title">List of Colleges</h3>
+                        
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <% if (msg.length > 0) { %>
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismmiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <%= msg %>
+    </div>
+    <% } %>
+
+    <div class="container">
+        <div class="row">
+            <table class="table table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th>SNo.</th>
+                        <th>College Name</th>
+                        <th>Representative Name</th>
+                        <th>Designation</th>
+                        <th>Add</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% for (var i = 0;i < college.length; i++) { %>
+            
+
+                    <tr id="d1">
+                        <td>
+                            <%= i+1 %>
+                        </td>
+                        <td>
+                                <%= college[i].cname %></td>
+                        <td>
+                            <%= college[i].rname%>
+                        </td>
+                        <td>
+                            <%= college[i].desig%>
+                        </td>
+
+                        <td><button type="button" data-toggle="modal" data-target="#edit" data-uid="1" class="update btn btn-warning btn-sm"
+                            onclick=" window.location.href = '/clglistac/<%=college[i]._id %>';">
+                            
+                            
+                            <span
+                                    class="glyphicon glyphicon-ok"></span></button></td>
+                        <td><button type="button" data-toggle="modal" data-target="#delete" data-uid="1" class="delete btn btn-danger btn-sm"
+                            onclick=" window.location.href = '/clglistrc/<%=college[i]._id %>';">
+    
+                            
+                            <span
+                                    class="glyphicon glyphicon-remove"></span></button></td>
+                    </tr>
+                    <% } %>
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="edit" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Update Data</h4>
+                </div>
+                <div class="modal-body">
+                    <input id="fn" type="text" class="form-control" name="fname" placeholder="First Name">
+                    <input id="ln" type="text" class="form-control" name="fname" placeholder="Last Name">
+                    <input id="mn" type="text" class="form-control" name="fname" placeholder="Middle Name">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="up" class="btn btn-warning" data-dismiss="modal">Update</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="delete" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Delete Data</h4>
+                </div>
+                <div class="modal-body">
+                    <strong>Are you sure you want to delete this data?</strong>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="del" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

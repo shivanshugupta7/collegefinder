@@ -1,0 +1,56 @@
+<%- layout('layout2')  -%>
+
+<header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1>Admin Login</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <% if(msg !='') { %>
+            <div class="alert alert-success alert-dismissible">
+                <%= msg %>
+            </div>
+            <% } %>
+
+            <form method="POST">
+
+
+
+
+                <div class="control-group">
+                    <div class="form-group my-5 floating-label-form-group controls">
+                        <label>Email</label>
+                        <input type="email" name="email" required placeholder="Email" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="control-group">
+                    <div class="form-group my-5 floating-label-form-group controls">
+                        <label>Password</label>
+                        <input type="Password" name="password" required placeholder="Password" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group my-5 text-center">
+                    <button class="btn btn-primary">Login</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>

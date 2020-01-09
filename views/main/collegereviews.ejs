@@ -1,0 +1,112 @@
+<%- layout('layout4')  -%>
+
+<header class="masthead" style="background-image: url('/img/contact-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1>Post a review for <%= college.cname %></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+
+            <form method="post" action="/collegereviews/<%= college.cname %> ">
+
+                <div class="control-group">
+                    <div class="form-group my-5 floating-label-form-group controls">
+                        <label>Name</label>
+                        
+                        <input type="text" name="username" placeholder="Name" class="form-control" >
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="control-group">
+                    <div class="form-group my-5 floating-label-form-group controls">
+                        <label>Review Title</label>
+                        <input type="text" required name="rtitle" placeholder="Review Title" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="control-group">
+                    <div class="form-group my-5 floating-label-form-group controls">
+                        <label>Batch</label>
+                        <input type="number" required name="year" min="2000" max="2023" placeholder="Batch" class="form-control">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="form-group my-5 floating-label-form-group controls">
+                        <label>Branch</label>
+                        <input type="text" name="branch" required placeholder="Branch" class="form-control">
+                    </div>
+                </div>
+
+
+
+                <div class="control-group">
+                    <div class="form-group my-5 floating-label-form-group controls">
+                        <label>Placements</label>
+                        <input type="number" placeholder="Placements" class="form-control" required name="ppo" min="1" max="5">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="form-group my-5 floating-label-form-group controls">
+                        <label>Infrastructure</label>
+                        <input type="number" placeholder="Infrastructure" class="form-control" required name="infra" min="1" max="5">
+                    </div>
+                </div>
+
+                
+
+                <div class="control-group">
+                    <div class="form-group my-5 floating-label-form-group controls">
+                        <label>Faculty & Course Curriculum</label>
+                        <input type="number" placeholder="Faculty & Course Curriculum" class="form-control" required name="fcc" min="1" max="5">
+                    </div>
+                </div>
+
+
+                <div class="control-group">
+                    <div class="form-group my-5 floating-label-form-group controls">
+                        <label>Crowd & Campus Life</label>
+                        <input type="number" class="form-control" placeholder="Crowd & Campus Life" required name="ccl" min="1" max="5">
+                    </div>
+                </div>
+
+                
+
+
+
+
+                <div class="control-group">
+                    <div class="form-group my-5 floating-label-form-group controls">
+                        <label>Content</label>
+                        <textarea name="content"  required placeholder="Content ...." cols="30" rows="10" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group my-5 text-center">
+                    <button class="btn btn-primary">Create Post</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>

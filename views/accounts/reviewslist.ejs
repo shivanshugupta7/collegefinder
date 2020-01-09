@@ -1,0 +1,239 @@
+<!doctype html>
+<html class="no-js h-100" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>College Dashboard</title>
+    <meta name="description"
+        content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="styles/shards-dashboards.1.1.0.min.css">
+    <link rel="stylesheet" href="styles/extras.1.1.0.min.css">
+    <link rel="stylesheet" href="styles/change.css">
+</head>
+
+<body class="h-100">
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Main Sidebar -->
+            <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+                <div class="main-navbar">
+                    <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+                        <a class="navbar-brand w-100 mr-0" style="line-height: 25px;">
+                            <div class="d-table m-auto">
+
+                                <span class="d-none d-md-inline ml-1">Dashboard</span>
+                            </div>
+                        </a>
+                        <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
+                            <i class="material-icons">&#xE5C4;</i>
+                        </a>
+                    </nav>
+                </div>
+                <div class="nav-wrapper">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/adminprofile">
+                                <i class="material-icons">view_list</i>
+                                <span>All Reviews</span>
+                            </a>
+                        </li>
+
+
+
+                        <li class="nav-item">
+                            <a class="nav-link " href="/clglist">
+                                <i class="material-icons">edit</i>
+                                <span>List of College</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " href="/reviewslist">
+                                <i class="material-icons">layers</i>
+                                <span>Posts</span>
+                            </a>
+                        </li>
+
+
+
+                    </ul>
+                </div>
+            </aside>
+            <!-- End Main Sidebar -->
+            <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+                <div class="main-navbar sticky-top bg-white">
+                    <!-- Main Navbar -->
+                    <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
+                        <form class="main-navbar__search w-100 d-none d-md-flex d-lg-flex" method="post"
+                            action="/search">
+                            <div class="input-group input-group-seamless ml-3">
+                                <input class="navbar-search form-control" name="q" type="text"
+                                    placeholder="Search for something...">
+
+                                <button type="submit" class="btn btn-primary mb-1">Search</button>
+                            </div>
+                        </form>
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle text-nowrap px-10" data-toggle="dropdown" href="#"
+                                role="button" aria-haspopup="true" aria-expanded="false">
+
+                                <p>admin</p>
+
+                                <span class="d-none d-md-inline-block"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-small">
+
+                                <a class="dropdown-item text-danger" href="/adminlogout">
+                                    <i class="material-icons text-danger">&#xE879;</i>Logout </a>
+                            </div>
+                        </li>
+                </div>
+
+                <!-- Page Header -->
+
+
+
+
+                <div class="page-header row no-gutters py-4">
+                    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                        <span class="text-uppercase page-subtitle">Dashboard</span>
+                        <h3 class="page-title">Reviews</h3>
+
+                    </div>
+                </div>
+
+
+                <% for (var i=0;i < colg.length;i++) { 
+                     if(colg[i].flag ==0) { %>
+                <div class="card card-small blog-comments">
+                    <div class="card-header border-bottom">
+
+                        <h3 class="m-0"><%= colg[i].rtitle %>
+                            <% for (var j=1;j<=parseInt(colg[i].rating/4);j++)
+                        { %>
+                            <i class="material-icons chg">star</i>
+
+                            <% } %>
+
+                            <% for (var j=1;j<=5-parseInt(colg[i].rating/4);j++)
+                          { %>
+                            <i class="material-icons">star_border</i>
+                            <% } %>
+
+
+
+
+                        </h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="blog-comments__item d-flex p-3">
+
+                            <div class="blog-comments__content">
+
+                                <div class="blog-comments__meta text-muted">
+                                    posted by <a class="text-secondary" href="#"><%= colg[i].username %></a> on
+                                    <a class="text-secondary" href="#"><%= colg[i].createdAt.toDateString() %> | </a>
+
+                                    <span class="text-muted"><%= colg[i].branch %>
+                                        <%= colg[i].collegename %>
+                                        - Batch of
+                                        <%= colg[i].year %> </span>
+
+                                </div>
+                                <p class="m-1 my-2 mb-1 text-muted">
+                                    Placements&nbsp;<b><%= colg[i].qualities.placements %></b>/5
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    Infrastructure&nbsp;<b><%= colg[i].qualities.infrastructure %></b>/5
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    Faculty & Course Curriculum&nbsp;<b><%= colg[i].qualities.faculty %></b>/5
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    Crowd & Campus Life&nbsp;<b><%= colg[i].qualities.campuslife %><b>/5
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                </p>
+
+                                <p class="m-0 my-1 mb-2 text-muted">
+                                    <%= colg[i].content %>
+                                </p>
+
+                                <div class="btn-group btn-group-sm">
+            
+
+
+
+
+
+
+
+                                    <!----<button type="button" class="btn btn-white" onclick=" window.location.href = '/clglistap/<%=creviews[i]._id%>/<%=creviews[i].collegename%>';">
+                                        <span class="text-success">
+                                            <i class="material-icons">check</i>
+                                        </span>Add </button>---->
+
+
+                                        <button type="button" class="btn btn-white"
+                                            onclick=" window.location.href = '/clglistap/<%=creviews[i]._id%>/<%=creviews[i].collegename%>';">
+                                            <span class="text-success">
+                                                <i class="material-icons">check</i>
+                                            </span>Add </button>
+
+                                    <button type="button" class="btn btn-white"
+                                        onclick=" window.location.href = '/clglistrp/<%=creviews[i]._id %>';">
+                                        <span class="text-success">
+                                            <i class="material-icons">clear</i>
+                                        </span>Delete</button>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <br>
+                        <% } %>
+                        <% } %>
+
+
+                      
+
+
+
+
+
+                        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+                            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                            crossorigin="anonymous"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+                            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                            crossorigin="anonymous"></script>
+                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                            crossorigin="anonymous"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+                        <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+                        <script
+                            src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
+                        <script src="scripts/extras.1.1.0.min.js"></script>
+                        <script src="scripts/shards-dashboards.1.1.0.min.js"></script>
+                        <script src="scripts/app/app-blog-overview.1.1.0.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only"></span>
+            </button>
+            <a class="navbar-brand" href="#">College Finder</a>
+        </div>
+
+        <form class="navbar-form navbar-left" method="post" action="/search">
+            <div class="form-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <button type="submit" class="btn btn">Submit</button>
+            </div>
+        </form>
+
+        <ul class="nav navbar-nav navbar-right">
+
+
+
+
+            <li><a class="dropdown-toggle" data-toggle="dropdown" href="#">College List</a>
+                <ul class="dropdown-menu">
+                    <% for (var i = 0;i < college.length; i++) 
+                    {       
+                          if(college[i].flag ==1) { %>
+                    
+                            <li><a href="/collegereviews/<%= college[i].cname %>">
+                                    <%= college[i].cname %></a></li>
+                        <% } %>
+                    <% } %>
+                </ul>
+            </li>
+
+            <% if (!user) { %>
+
+            <li><a class="dropdown-toggle" data-toggle="dropdown" href="#">Signup / Login</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/signup">Signup</a></li>
+                    <li><a href="/login">Login</a></li>
+                </ul>
+            </li>
+
+            <% } else { %>
+
+            <li><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <%= user.profile.username %></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </li>
+            <% } %>
+
+        </ul>
+
+
+
+    </div>
+</nav>
