@@ -22,7 +22,7 @@
     "express-flash": "0.0.2",
     "express-session": "^1.17.0",
     "express-validator": "^5.3.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongodb": "^3.3.3",
     "mongoosastic": "^4.3.0",
     "mongoose": "^5.7.5",
